@@ -26,9 +26,9 @@ import com.example.jetcoffee.model.dummyBestSellerMenu
 import com.example.jetcoffee.model.dummyCategory
 import com.example.jetcoffee.model.dummyMenu
 import com.example.jetcoffee.ui.components.CategoryItem
+import com.example.jetcoffee.ui.components.HomeSection
 import com.example.jetcoffee.ui.components.MenuItem
 import com.example.jetcoffee.ui.components.Search
-import com.example.jetcoffee.ui.components.SectionText
 import com.example.jetcoffee.ui.theme.JetCoffeeTheme
 
 class MainActivity : ComponentActivity() {
@@ -46,12 +46,18 @@ class MainActivity : ComponentActivity() {
 fun JetCoffeeApp() {
     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         Banner()
-        SectionText(stringResource(R.string.section_category))
-        CategoryRow()
-        SectionText(stringResource(R.string.section_favorite_menu))
-        MenuRow(dummyMenu)
-        SectionText(stringResource(R.string.section_best_seller_menu))
-        MenuRow(dummyBestSellerMenu)
+        HomeSection(
+            title = stringResource(R.string.section_category),
+            content = { CategoryRow() }
+        )
+        HomeSection(
+            title = stringResource(R.string.section_best_seller_menu),
+            content = { MenuRow(dummyMenu) }
+        )
+        HomeSection(
+            title = stringResource(R.string.section_best_seller_menu),
+            content = { MenuRow(dummyBestSellerMenu) }
+        )
     }
 }
 
